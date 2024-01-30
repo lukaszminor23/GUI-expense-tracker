@@ -34,7 +34,7 @@ def create_table():
 
 
 if __name__ == '__main__':
-    with sqlite3.connect('expense_tracker.db') as connection:
+    with sqlite3.connect('expenses.db') as connection:
         init_db(connection)
 
         window = Tk()
