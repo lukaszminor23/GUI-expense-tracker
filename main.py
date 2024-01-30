@@ -39,6 +39,7 @@ if __name__ == '__main__':
 
         window = Tk()
         window.title('Expense tracker')
+        window.resizable(False, False)
 
         table = ttk.Treeview(columns=('id', 'category', 'amount', 'date'), show='headings')
         create_table()
