@@ -60,10 +60,15 @@ class Repository:
         except IndexError:
             messagebox.showinfo("Error", "No item selected")
         else:
-            sql = '''DELETE from expenses WHERE id=?'''
-            cursor = self.conn.cursor()
-            cursor.execute(sql, [str(item_id)])
-            self.conn.commit()
+            proceed = messagebox.askyesno(title="How do you want to proceed?",
+                                          message="Are yo sure that you want to delete this item?")
+            if proceed:
+                sql = '''DELETE from expenses WHERE id=?'''
+                cursor = self.conn.cursor()
+                cursor.execute(sql, [str(item_id)])
+                self.conn.commit()
 
-            self.table.delete(selected_item)
-            messagebox.showinfo("Item deleted", 'Item has been deleted from the database')
+                self.table.delete(selected_item)
+                messagebox.showinfo("Item deleted", 'Item has been deleted from the database')
+            else:
+                pass
